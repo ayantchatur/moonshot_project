@@ -1,0 +1,2 @@
+#You need these packages to run the code:
+pillow=9.4.0
