@@ -5,10 +5,9 @@ from tkinter import colorchooser
 from PIL import Image, ImageTk
 import pickle
 import os
-from random import choice
 count = 0
 primaryColorVar="SkyBlue1"
-def resized_label(filename="", width=215, height=215, relx=.5, rely=.25, anchor=CENTER):
+def resized_label(filename="", width=260, height=215, relx=.5, rely=.25, anchor=CENTER):
     global root
     image = Image.open(filename)
     resize_image = image.resize((width, height))
@@ -25,7 +24,7 @@ timeList = pickle.load(open("time.dat", "rb"))
 os.system("clear")
 root = Tk()
 root.geometry("700x950")
-root.title("Activity List")
+root.title("Activity Trackr")
 def bgColor():
     bgColor = colorchooser.askcolor()[1]
     if bgColor:
@@ -39,13 +38,12 @@ def bgColor():
         for widget in root.winfo_children():
             if isinstance(widget, Button):
                 widget.config(bg=bgColor)
-
 def primaryColor():
     global primaryColorVar
     primaryColorVar = colorchooser.askcolor()[1]
     if primaryColorVar:
         table.tag_configure(tagname='bg', background=primaryColorVar,font=("times", 15))
-        style.configure("Treeview",bg=primaryColorVar,fg="black",rowheight=30,fieldbackground=primaryColor)
+        style.configure("Treeview",bg=primaryColorVar,fg="black",rowheight=30,fieldbackground=primaryColorVar)
         style.configure("Treeview.Heading",bg=primaryColorVar,fg="black",rowheight=30,font=("times", 15))
 
 
@@ -105,9 +103,7 @@ optionMenu.add_separator()
 optionMenu.add_command(label="Exit", command=exit)
 
 
-checklist = resized_label("checklist.png", 215, 215, 0.5, 0.23)
-title = Label(root, text="Activity List", font=("times", 15, "bold"), bg="CadetBlue1", fg="black")
-title.place(relx=0.5, rely=0.05, anchor=CENTER)
+checklist = resized_label("checklist.png", 235, 215, 0.5, 0.17)
 label1 = Label(root, text="Name:", font=("times", 15), bg="CadetBlue1", fg="black")
 label1.place(relx=0.3, rely=0.4, anchor=CENTER)
 nameInput = Entry(root, font=("times", 12), bg="CadetBlue1", fg="black")
