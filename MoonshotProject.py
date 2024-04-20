@@ -187,5 +187,8 @@ btnAdd.place(relx=0.3,rely=0.6,anchor=CENTER)
 btnClear=Button(root,text="Clear",command=Clear,font=("times",12),fg="black")
 btnClear.place(relx=0.7,rely=0.6,anchor=CENTER)
 btnShow=Button(root,text="Show",command=Show,font=("times",12),fg="black")
-btnShow.place(relx=0.5,rely=0.6,anchor=CENTER) 
+btnShow.place(relx=0.5,rely=0.6,anchor=CENTER)
+empty=[]
+if nameList==empty:
+    btnShow.destroy()
 root.mainloop()
